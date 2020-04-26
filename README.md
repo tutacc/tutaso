@@ -27,6 +27,23 @@ Now your obfs-server will be listening on 0.0.0.0:8443. It will process the traf
 docker run -d --restart=always --network=host --name tutaso tutacc/tutaso tutal -s your_server_ip -p 8443 --obfs tls -l 8388 --obfs-host www.bing.com --fast-open
 ```
 
+Or using config file:
+`/etc/tutal.json`
+```json
+{
+    "server":"52.175.64.159",
+    "server_port":"152",
+    "local_port":"8443",
+    "obfs":"tls",
+    "obfs_host":"4de6e43233.wns.windows.com",
+    "fast_open":true
+}
+```
+
+```bash
+docker run -d --restart=always --network=host -v /etc/tutal.json:/etc/tutal.json --name tutaso tutacc/tutaso tutal -c /etc/tutal.json
+```
+
 Then it will be listening at the 0.0.0.0:8388, communicating with the server. Once it receives the traffic from shadowsocks, it will obfuscate it and sent it to the server.
 
 So the shadowsocks client or the ss-redir can treat it as a shadowsocks server.
