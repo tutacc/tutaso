@@ -27,7 +27,7 @@ Now your obfs-server will be listening on 0.0.0.0:8443. It will process the traf
 docker run -d --restart=always --network=host --name tutaso tutacc/tutaso tutal -s your_server_ip -p 8443 --obfs tls -l 8388 --obfs-host www.bing.com --fast-open
 ```
 
-Or using config file:
+Or use config file:
 `/etc/tutal.json`
 ```json
 {
